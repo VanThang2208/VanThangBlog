@@ -2,12 +2,36 @@
 import React from 'react';
 import { PROFILE, PROJECTS } from '../constants';
 
+const CertGallery: React.FC<{ images: string[] }> = ({ images }) => (
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+    {images.map((src, idx) => (
+      <div key={idx} className="overflow-hidden rounded-xl border border-slate-100 bg-white p-2">
+        <img src={src} alt={`Certificate ${idx + 1}`} className="w-full h-40 object-contain" />
+      </div>
+    ))}
+  </div>
+);
+
 const AboutPage: React.FC = () => {
   return (
     <div className="py-20 animate-fade-in">
       <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-4xl font-bold text-slate-900 mb-8">Về bản thân tôi</h1>
         <div className="prose prose-lg text-slate-600 max-w-none space-y-6">
+          <div className="flex flex-col md:flex-row items-start gap-8">
+            <div className="w-40 flex-shrink-0">
+              <img src={PROFILE.avatarUrl} alt={`${PROFILE.name} avatar`} className="rounded-full w-40 h-40 object-cover border-4 border-slate-50 shadow-md" />
+            </div>
+            <div className="flex-1">
+              <p>
+                Xin chào! Tôi là <strong>{PROFILE.name}</strong>, một Kỹ sư Lập trình mạng với niềm đam mê sâu sắc dành cho kiến trúc hệ thống và an ninh mạng.
+              </p>
+              <p>
+                {PROFILE.description}
+              </p>
+            </div>
+          </div>
+
           <p>
             Xin chào! Tôi là <strong>{PROFILE.name}</strong>, một Kỹ sư Lập trình mạng với niềm đam mê sâu sắc dành cho kiến trúc hệ thống và an ninh mạng. 
           </p>
@@ -45,6 +69,13 @@ const AboutPage: React.FC = () => {
                 Top 5 cuộc thi Security Hackathon 2023
               </li>
             </ul>
+
+            {PROFILE.certificates && PROFILE.certificates.length > 0 && (
+              <div className="mt-6">
+                <h4 className="text-white/90 font-semibold mb-3">Hình ảnh chứng chỉ</h4>
+                <CertGallery images={PROFILE.certificates} />
+              </div>
+            )}
           </div>
         </div>
       </div>
