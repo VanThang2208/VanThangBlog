@@ -1,4 +1,10 @@
-# Logs
+.env*
+dist/
+node_modules/
+/.github/workflows/*.local
+.DS_Store
+npm-debug.log
+package-lock.json# Logs
 logs
 *.log
 npm-debug.log*
