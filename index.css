@@ -1,0 +1,12 @@
+/* Minimal stylesheet to avoid 404 and provide basic layout until Tailwind is built properly */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --text:#e6eef6;
+}
+html,body,#root{height:100%;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+.container{max-width:1024px;margin:0 auto;padding:1rem}
+/* basic chat bubble styles to keep layout readable */
+.chat-bubble{background:var(--card);padding:12px;border-radius:12px;margin:8px 0;display:inline-block}
+.btn{background:#2563eb;color:white;padding:8px 14px;border-radius:8px;border:none}
