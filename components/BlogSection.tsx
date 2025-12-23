@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { BLOG_POSTS } from '../constants';
+import PostModal from './PostModal';
 
 interface BlogSectionProps {
   isPage?: boolean;
@@ -13,6 +14,11 @@ const BlogSection: React.FC<BlogSectionProps> = ({ isPage = false }) => {
   const displayedPosts = isPage 
     ? (filter === 'Tất cả' ? BLOG_POSTS : BLOG_POSTS.filter(p => p.category === filter))
     : BLOG_POSTS.slice(0, 3);
+
+  const [activePost, setActivePost] = useState<string | null>(null);
+
+  const openPost = (id: string) => setActivePost(id);
+  const closePost = () => setActivePost(null);
 
   return (
     <section className={`py-20 ${isPage ? 'bg-white' : 'bg-white'}`}>
@@ -45,7 +51,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ isPage = false }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {displayedPosts.map(post => (
-            <article key={post.id} className="group cursor-pointer flex flex-col h-full bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
+            <article key={post.id} onClick={() => openPost(post.id)} className="group cursor-pointer flex flex-col h-full bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
               <div className="relative h-60 overflow-hidden rounded-t-3xl">
                 <img 
                   src={post.imageUrl} 
@@ -76,6 +82,9 @@ const BlogSection: React.FC<BlogSectionProps> = ({ isPage = false }) => {
               </div>
             </article>
           ))}
+          {activePost && (
+            <PostModal post={BLOG_POSTS.find(p => p.id === activePost) || null} onClose={closePost} />
+          )}
         </div>
       </div>
     </section>
