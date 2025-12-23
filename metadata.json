@@ -1,0 +1,7 @@
+{
+  "name": "Thắng Đào - Network Programming Blog",
+  "description": "A personal portfolio and blog for Đào Văn Thắng, a 4th-year HUTECH student specializing in Network Programming and Computer Science.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
