@@ -5,7 +5,12 @@ export const PROFILE = {
   name: "Đào Văn Thắng",
   role: "Kỹ sư Lập trình mạng & Bảo mật",
   description: "Chuyên gia trong việc thiết kế và triển khai các hệ thống mạng phức tạp, lập trình socket hiệu năng cao và bảo mật hạ tầng. Cựu sinh viên Đại học Công nghệ TP.HCM (HUTECH), hiện đang tập trung vào các giải pháp SDN và Cloud Networking.",
-  avatarUrl: "https://picsum.photos/seed/thang-pro/400/400",
+  avatarUrl: "/assets/avatar.svg",
+  certificates: [
+    "/assets/cert1.png",
+    "/assets/cert2.png",
+    "/assets/cert3.png",
+  ],
   email: "thang.dao.work@gmail.com",
   github: "https://github.com/thangdao",
   linkedin: "https://linkedin.com/in/thangdao",
